@@ -38,7 +38,7 @@ npm i
 ```sh
 npm run build
 ```
-3. Push theme files to non-live development shopify theme.
+3. Push theme file to non-live development shopify theme.
 ```sh
 shopify theme push --theme theme name or theme id
 ```
