@@ -1,1 +1,83 @@
+<section class="py-8 featured-collection">
+    <div class="container px-4 mx-auto">
+      <div class="mb-8 text-center">
+        <p class="text-sm text-gray-600">{{ section.settings.eyebrow_heading }}</p>
+        <h2 class="h2">{{ section.settings.headline }}</h2>
+      </div>
+      <div class="flex space-x-4 overflow-x-auto">
+        {% assign collection = collections[section.settings.collection] %}
+        {% for product in collection.products %}
+          <div class="flex-shrink-0 p-4 bg-white border border-gray-200 rounded-lg w-80 product-card">
+            <a href="{{ product.url }}">
+              <img src="{{ product.featured_image | image_url: 'medium' }}" alt="{{ product.title }}" class="w-full h-auto mb-4">
+              <div class="font-sans text-sm font-normal">{{ product.title }}</div>
+              <p class="font-sans text-sm font-normal">{{ product.price | money }}</p>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="mt-8 text-center">
+        <a href="{{ section.settings.button_link }}" class="px-10 py-4 font-sans text-xs text-black uppercase bg-white border border-blush w-fit lg:hover:bg-blush">
+          View All
+        </a>
+      </div>
+    </div>
+  </section>
+  
 
+
+{% schema %}
+{
+  "name": "Featured Collection",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow_heading",
+      "label": "Eyebrow Heading",
+      "default": "SHOP"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Featured Collection"
+    },
+    {
+        "type": "text",
+        "id": "button_text",
+        "label": "Button Text",
+        "default": "View All"
+      },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection",
+      "category": "Featured"
+    }
+  ]
+}
+{% endschema %}
